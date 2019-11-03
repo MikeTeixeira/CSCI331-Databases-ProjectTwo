@@ -64,7 +64,7 @@ Create the table Process.WorkflowSteps table with the following columns
 IF EXISTS(SELECT name FROM sys.schemas WHERE name LIKE 'Process')
     BEGIN 
         PRINT 'Dropping schema if exists'
-        DROP SCHEMA [Proces]
+        DROP SCHEMA [Process]
     END
 GO
 
