@@ -18,19 +18,20 @@ CREATE PROCEDURE [Project2].[LoadDimCustomer]
 AS
 BEGIN
 
+
     -- Insert into the customer table including the user auth key
     INSERT INTO [CH01-01-Dimension].[DimCustomer] 
-        (CustomerKey, CustomerName, UserAuthorizationKey, DateAdded, DateOfLastUpdate)
-    SELECT
-        NEXT VALUE FOR [Project2].[DimCustomerSequenceKeys], 
-        old.CustomerName, 
-        @UserAuthorizationKey, 
-        SYSDATETIME(), 
-        SYSDATETIME()
-    FROM FileUpload.OriginallyLoadedData AS old
+        (CustomerKey, CustomerName, UserAuthorizationKey)
+    SELECT 
+        NEXT VALUE FOR [Project2].[DimCustomerSequenceKeys] AS CustomerKey, 
+        C.CustomerName, 
+        @UserAuthorizationKey
+    FROM (SELECT DISTINCT CustomerName FROM FileUpload.OriginallyLoadedData) AS C 
+
 
     --  Insert the user into the Process.WorkFlowTable
     EXEC Process.usp_TrackWorkFlow @GroupMemberUserAuthorizationKey = @UserAuthorizationKey, @WorkFlowStepDescription =  'Loading data into DimCustomer table';
 
 END
+GO
 

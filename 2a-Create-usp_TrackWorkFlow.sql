@@ -1,10 +1,5 @@
 USE BIClass
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
 -- ============================================= 
 -- Author: Michael Teixeira 
 -- Procedure: [Project2].[CreateWorkFlowStepsTable]
@@ -28,3 +23,4 @@ BEGIN
 
 
 END
+GO

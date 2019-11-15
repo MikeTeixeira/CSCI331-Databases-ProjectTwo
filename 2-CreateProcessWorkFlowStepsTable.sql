@@ -38,14 +38,3 @@ BEGIN
 
 END
 GO
-
-
--- EXEC [Project2].[CreateWorkFlowStepsTable] @GroupMemberUserAuthorizationKey = 1;
--- GO
-
--- SELECT * FROM [Process].WorkFlowSteps
--- GO
-
-
--- SELECT * FROM DbSecurity.UserAuthorization
--- GO

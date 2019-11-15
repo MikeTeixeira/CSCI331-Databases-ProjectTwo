@@ -1,6 +1,13 @@
 USE BIClass
 Go
 
+-- ============================================= 
+-- Author: Michael Teixeira 
+-- Procedure: [Project2].[LoadDimOccupation]
+-- Create date: November 8th, 2019 
+-- Description: Loads the DimOccupation data from the FileUpload.OriginallyLoadedData 
+-- =============================================
+
 
 DROP PROCEDURE IF EXISTS [Project2].[LoadDimOccupation]
 GO
@@ -12,15 +19,14 @@ CREATE PROCEDURE [Project2].[LoadDimOccupation]
 AS
 BEGIN
 
-    INSERT INTO [CH01-01-Dimension].[DimOccupation] (OccupationKey, Occupation, UserAuthorizationKey, DateAdded, DateOfLastUpdate)
+    INSERT INTO [CH01-01-Dimension].[DimOccupation] (OccupationKey, Occupation, UserAuthorizationKey)
     SELECT
         NEXT VALUE FOR [Project2].[DimOccupationSequenceKeys],
-        Occupation,
-        @UserAuthorizationKey,
-        SYSDATETIME(),
-        SYSDATETIME()
-    FROM [FileUpload].OriginallyLoadedData
+        O.Occupation,
+        @UserAuthorizationKey
+    FROM (SELECT DISTINCT Occupation FROM FileUpload.OriginallyLoadedData) AS O
 
     EXEC Process.usp_TrackWorkFlow @WorkFlowStepDescription = 'Loading data into the DimOccupation Table', @GroupMemberUserAuthorizationKey = @UserAuthorizationKey;
 
 END
+GO

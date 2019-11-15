@@ -1,11 +1,6 @@
 USE BIClass
 GO
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
 -- ============================================= 
 -- Author: Michael Teixeira
 -- Procedure: [Project2].[usp_CountTableRows]
@@ -37,4 +32,4 @@ BEGIN
     EXEC Process.usp_TrackWorkFlow @GroupMemberUserAuthorizationKey = @UserAuthorizationKey, @WorkFlowStepDescription =  'Truncated all old tables';
 
 END
--- GO
+GO

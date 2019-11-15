@@ -1,16 +1,12 @@
 USE BIClass
 GO
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 
 -- ============================================= 
 -- Author: Michael Teixeira
 -- Procedure: [Project2].[usp_CountTableRows]
 -- Create date: November 6th, 2019
--- Description: Counts all the rows in every table
+-- Description: Counts all the rows in every table besides the file upload table
 -- =============================================
 
 
@@ -49,10 +45,4 @@ BEGIN
 
 
 END
--- GO
-
--- EXEC [Project2].[usp_CountTableRows] @UserAuthorizationKey = 1;
--- GO
-
--- SELECT * FROM Process.WorkFlowSteps;
--- GO
+GO

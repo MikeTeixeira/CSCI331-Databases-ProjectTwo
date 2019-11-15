@@ -1,10 +1,12 @@
 USE BIClass
 GO
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+-- ============================================= 
+-- Author: Michael Teixeira
+-- Procedure: [Project2].[DropAllForeignKeys]
+-- Create date: November 7th, 2019
+-- Description: Drops all of the Foreign keys from the Fact.Data table
+-- =============================================
 
 DROP PROCEDURE IF EXISTS [Project2].[DropAllForeignKeys];
 GO
@@ -45,3 +47,4 @@ BEGIN
     EXEC Process.usp_TrackWorkFlow @GroupMemberUserAuthorizationKey = 1, @WorkFlowStepDescription = 'Dropped all Foreign Keys from Fact.Data table.'
 
 END
+GO

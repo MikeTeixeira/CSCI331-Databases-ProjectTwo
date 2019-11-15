@@ -1,8 +1,6 @@
 USE BIClass
 GO
 
--- COMMENTED OUT TO AVOID ERRORS
-
 -- ============================================= 
 -- Author: Michael Teixeira
 -- Procedure: [Project2].[CreateUserAuthtable]
@@ -31,7 +29,9 @@ BEGIN
         GroupMemberLastName nvarchar(35) NOT NULL,
         GroupMemberFirstName nvarchar(25) NOT NULL,
         GroupName nvarchar(20) NOT NULL DEFAULT('G_Kenley'),
-        DateAdded datetime2 null default sysdatetime()
+        DateAdded datetime2 null default sysdatetime(),
+        CONSTRAINT PK_UserAuthKey PRIMARY KEY(UserAuthorizationKey)
+
     )
 
     INSERT INTO [DbSecurity].[UserAuthorization](UserAuthorizationKey, GroupMemberLastName,GroupMemberFirstName)
@@ -43,12 +43,3 @@ BEGIN
 
 END
 GO
-
--- -- execute the procedure to create the table
--- EXEC [Project2].[CreateUserAuthtable] @GroupMemberUserAuthorization = 1;
--- GO
-
-
--- -- Check to see if the data was populated
--- SELECT * FROM [DbSecurity].[UserAuthorization];
--- GO

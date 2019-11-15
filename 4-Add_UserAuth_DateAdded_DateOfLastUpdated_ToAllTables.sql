@@ -20,48 +20,58 @@ CREATE PROCEDURE [Project2].[Add_UserAuth_DateAdded_DateOfLastUpdated_ToAllTable
 AS
 BEGIN
 
+
+    ALTER TABLE [CH01-01-Dimension].[DimCustomer]
+    DROP CONSTRAINT 
+        DF__DimCustom__DateO__245D67DE   
+
+    ALTER TABLE [CH01-01-Dimension].[DimCustomer]
+    DROP COLUMN UserAuthorizationKey, 
+        DateAdded,
+        DateOfLastUpdate
+
     SET NOCOUNT ON;
 
     ALTER TABLE [CH01-01-Dimension].[DimCustomer]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
     ALTER TABLE [CH01-01-Dimension].[DimGender]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
 
     ALTER TABLE [CH01-01-Dimension].[DimMaritalStatus]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
     ALTER TABLE [CH01-01-Dimension].[DimOccupation]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
     ALTER TABLE [CH01-01-Dimension].[DimOrderDate]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1-99,
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
 
     ALTER TABLE [CH01-01-Dimension].[DimProduct]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
     ALTER TABLE [CH01-01-Dimension].[DimTerritory]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
 
     ALTER TABLE [CH01-01-Dimension].[SalesManagers]
-    ADD UserAuthorizationKey INT NOT NULL DEFAULT(1),
+    ADD UserAuthorizationKey INT NOT NULL DEFAULT(-99),
         DateAdded datetime2 null DEFAULT(sysdatetime()),
         DateOfLastUpdate datetime2 null DEFAULT(sysdatetime())
 
@@ -75,11 +85,4 @@ BEGIN
 
 
 END
--- GO
-
--- -- Execute the given procedure
--- EXEC [Project2].[Add_UserAuth_DateAdded_DateOfLastUpdated_ToAllTables] @GroupMemberUserAuthorizationKey = 1;
--- GO
-
--- -- check to see if the columns were added
--- SELECT * FROM [CH01-01-Dimension].[SalesManagers];
+GO
