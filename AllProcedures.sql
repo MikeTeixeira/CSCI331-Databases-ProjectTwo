@@ -1,6 +1,13 @@
 USE BIClass
 GO
 
+CREATE SCHEMA [Process];
+GO
+CREATE SCHEMA [Project2];
+GO
+CREATE SCHEMA [DbSecurity];
+GO
+
 
 -- ============================================= 
 -- Author: Michael Teixeira 
@@ -18,6 +25,8 @@ AS
 BEGIN
 
     SET NOCOUNT ON;
+
+    DROP SEQUENCE IF EXISTS [Process].WorkFlowStepTableRowCountBy1
 
     CREATE SEQUENCE [Process].WorkFlowStepTableRowCountBy1
         START WITH 1

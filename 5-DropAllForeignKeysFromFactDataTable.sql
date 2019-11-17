@@ -18,10 +18,11 @@ CREATE PROCEDURE [Project2].[DropAllForeignKeys]
 AS
 BEGIN
 
+
     SET NOCOUNT ON;
 
     ALTER TABLE [CH01-01-Fact].[Data]
-    DROP CONSTRAINT FK_Data_DimCustomer;
+    DROP CONSTRAINT IF EXISTS FK_Data_DimCustomer;
 
     ALTER TABLE [CH01-01-Fact].[Data]
     DROP CONSTRAINT FK_Data_DimGender;
